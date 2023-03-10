@@ -8,5 +8,15 @@ const getRandomNumber = (a, b) => {
 //Функция для проверки максимальной длины строки
 const maxLengthStringCheck = (string, maxLength) => String(string).length <= maxLength;
 
-getRandomNumber(2, 1);
 maxLengthStringCheck('test', 10);
+
+const photos = [];
+for (let i = 0; i < 25; i++) {
+  photos[i] = {
+    id:i,
+    url:['photos/', i, '.jpg'].join(''),
+    description:['картинка под номером ', i].join(''),
+    likes:getRandomNumber(15,200),
+    comments:getRandomNumber(0,200)
+  };
+}
