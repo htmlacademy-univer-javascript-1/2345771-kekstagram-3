@@ -1,3 +1,4 @@
+//Функция, возвращающая случайное целое число из переданного диапазона включительно
 const getRandomNumber = (a, b) => {
   const first = Math.abs(a);
   const second = Math.abs(b);
