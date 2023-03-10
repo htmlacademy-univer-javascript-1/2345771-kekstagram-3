@@ -13,9 +13,9 @@ maxLengthStringCheck('test', 10);
 const photos = [];
 for (let i = 0; i < 25; i++) {
   photos[i] = {
-    id:i,
-    url:['photos/', i, '.jpg'].join(''),
-    description:['картинка под номером ', i].join(''),
+    id:i + 1,
+    url:['photos/', i + 1, '.jpg'].join(''),
+    description:['картинка под номером ', i + 1].join(''),
     likes:getRandomNumber(15,200),
     comments:getRandomNumber(0,200)
   };
