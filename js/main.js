@@ -1,8 +1,22 @@
 //Функция, возвращающая случайное целое число из переданного диапазона включительно
-const randomNumber = (a, b) => (a + (b - a) * Math.random()).toFixed();
+const getRandomNumber = (a, b) => {
+  const first = Math.abs(a);
+  const second = Math.abs(b);
+  return (first + (second - first) * Math.random()).toFixed();
+};
 
 //Функция для проверки максимальной длины строки
 const maxLengthStringCheck = (string, maxLength) => String(string).length <= maxLength;
 
-randomNumber(2, 1);
 maxLengthStringCheck('test', 10);
+
+const photos = [];
+for (let i = 0; i < 25; i++) {
+  photos[i] = {
+    id:i,
+    url:['photos/', i, '.jpg'].join(''),
+    description:['картинка под номером ', i].join(''),
+    likes:getRandomNumber(15,200),
+    comments:getRandomNumber(0,200)
+  };
+}
