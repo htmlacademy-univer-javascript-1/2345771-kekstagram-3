@@ -5,7 +5,7 @@ const getRandomNumber = (a, b) => {
   return (first + (second - first) * Math.random()).toFixed();
 };
 
-//Функция, возращвющая случайный элемент из массива
+//Функция, возвращающая случайный элемент из массива
 const getRandomItem = (items) => items[getRandomNumber(0, items.length - 1)];
 
 //Функция для проверки максимальной длины строки
