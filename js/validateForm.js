@@ -1,5 +1,8 @@
 import {maxLengthStringCheck, minLengthStringCheck} from './util.js';
 
+const MIN_COMMENT_LENGTH = 20;
+const MAX_COMMENT_LENGTH = 140;
+document.querySelector('.text__description').setAttribute('maxlength', MAX_COMMENT_LENGTH);
 const orderForm = document.querySelector('.img-upload__form');
 
 const pristine = new Pristine(orderForm, {
@@ -12,24 +15,25 @@ const pristine = new Pristine(orderForm, {
 });
 
 function validateCommentMin (value) {
-  return minLengthStringCheck(value, 20);
+  return minLengthStringCheck(value, MIN_COMMENT_LENGTH);
 }
 
 function validateCommentMax (value) {
-  return maxLengthStringCheck(value, 140);
+  return maxLengthStringCheck(value, MAX_COMMENT_LENGTH);
 }
 
 pristine.addValidator(
   orderForm.querySelector('.text__description'),
   validateCommentMin,
-  'длина комментария не может быть меньше 20 символов');
+  ['длина комментария не может быть меньше ', MIN_COMMENT_LENGTH, ' символов'].join(''));
 pristine.addValidator(
   orderForm.querySelector('.text__description'),
   validateCommentMax,
-  'длина комментария не может составлять больше 140 символов');
+  ['длина комментария не может составлять больше ', MAX_COMMENT_LENGTH, ' символов'].join(''));
 
 orderForm.addEventListener('submit', (evt) => {
   if (!pristine.validate()) {
     evt.preventDefault();
   }
 });
+

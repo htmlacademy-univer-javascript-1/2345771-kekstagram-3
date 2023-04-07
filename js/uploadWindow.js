@@ -4,13 +4,13 @@ const uploadWindow = document.querySelector('.img-upload__overlay');
 const hashtagInput = document.querySelector('.text__hashtags');
 const commentInput = document.querySelector('.text__description');
 
-function closeWindow() {
+const closeWindow = () => {
   uploadWindow.classList.add('hidden');
   document.body.classList.remove('modal-open');
   openButton.value = '';
   hashtagInput.value = '';
   commentInput.value = '';
-}
+};
 
 openButton.addEventListener ('change', () => {
   uploadWindow.classList.remove('hidden');
