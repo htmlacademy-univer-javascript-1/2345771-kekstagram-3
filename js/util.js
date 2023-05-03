@@ -9,6 +9,9 @@ const getRandomNumber = (a, b) => {
 const getRandomItem = (items) => items[getRandomNumber(0, items.length - 1)];
 
 //Функция для проверки максимальной длины строки
-const maxLengthStringCheck = (string, maxLength) => String(string).length <= maxLength;
+const maxLengthStringCheck = (value, maxLength) => value.length <= maxLength;
 
-export {getRandomNumber, getRandomItem, maxLengthStringCheck};
+//Функция для проверки минимальной длины строки
+const minLengthStringCheck = (value, minLength) => value.length >= minLength;
+
+export {getRandomNumber, getRandomItem, maxLengthStringCheck, minLengthStringCheck};
