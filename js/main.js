@@ -1,8 +1,8 @@
-import {createSuccessMessage, createErrorMessage} from './errorSuccesMessage.js';
+import {createSuccessMessage, createErrorMessage} from './messages.js';
 import {loadPhotos} from './render.js';
-import './uploadWindow.js';
-import './validateForm.js';
-import './photoUpload.js';
+import './upload-window.js';
+import './validate-form.js';
+import './photo-upload.js';
 
 createSuccessMessage();
 createErrorMessage();

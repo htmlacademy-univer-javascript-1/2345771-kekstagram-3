@@ -1,13 +1,14 @@
 import {minLengthStringCheck} from './util.js';
 import {MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH} from './data.js';
 import {createInfoInput} from './server.js';
-import {closeWindow, activateButton, disableButton} from './uploadWindow.js';
-import {openErrorMessage, openSuccessMessage} from './errorSuccesMessage.js';
+import {closeWindow, activateButton, disableButton} from './upload-window.js';
+import {openErrorMessage, openSuccessMessage} from './messages.js';
 
 document.querySelector('.text__description').setAttribute('maxlength', MAX_COMMENT_LENGTH);
 const orderForm = document.querySelector('.img-upload__form');
-const commentWrapper = document.querySelectorAll('.img-upload__field-wrapper');
+const commentWrappers = document.querySelectorAll('.img-upload__field-wrapper');
 
+//валидатор Pristine
 const pristine = new Pristine(orderForm, {
   classTo: 'form__item',
   errorClass: 'form__item--invalid',
@@ -24,17 +25,18 @@ pristine.addValidator(
   validateCommentMin,
   `Длина комментария не может быть меньше ${MIN_COMMENT_LENGTH} символов`);
 
+//Обработка различных ошибок
 const removeErrorMessage = () => {
-  if (commentWrapper[1].children.length > 1){
+  if (commentWrappers[1].children.length > 1){
     document.querySelector('.errorMessage').remove();
   }
 };
 
 const addMessage = (data, color) => {
-  if (commentWrapper[1].children.length <= 1){
+  if (commentWrappers[1].children.length <= 1){
     const textError = document.createElement('p');
     textError.textContent = data;
-    commentWrapper[1].appendChild(textError);
+    commentWrappers[1].appendChild(textError);
     textError.className = 'errorMessage';
     textError.style.color = color;
   }

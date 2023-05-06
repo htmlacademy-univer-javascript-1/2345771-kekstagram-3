@@ -1,4 +1,4 @@
-import {removeErrorMessage} from './validateForm.js';
+import {removeErrorMessage} from './validate-form.js';
 
 //Открытие, закрытие окна редактирования фото
 const openButton = document.querySelector('#upload-file');
