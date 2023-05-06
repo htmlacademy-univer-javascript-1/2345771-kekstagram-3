@@ -1,7 +1,8 @@
-import {renderPhotos} from './render.js';
+import {loadPhotos} from './render.js';
 import './uploadWindow.js';
 import './validateForm.js';
+import {createSuccessMessage, createErrorMessage} from './errorSuccesMessage.js';
 
-renderPhotos();
-
-//Задание 7 часть 2
+createSuccessMessage();
+createErrorMessage();
+loadPhotos();
