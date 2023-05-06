@@ -34,4 +34,4 @@ const showError = (data) => {
 
 const loadPhotos = createLoaderPhotos(createPhotos,showError);
 
-export {renderPhotos,loadPhotos};
+export {loadPhotos};

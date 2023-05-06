@@ -217,4 +217,4 @@ sliderElement.noUiSlider.on('update', () => {
   }
 });
 
-export {closeWindow, clearWindow, activateButton, disableButton};
+export {closeWindow, activateButton, disableButton};
