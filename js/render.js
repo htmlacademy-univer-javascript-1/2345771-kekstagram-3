@@ -1,7 +1,10 @@
-import {photos} from './data.js';
+//import {photos} from './data.js';
+import {createLoaderPhotos} from './server.js';
 
 const photosTemplate = document.querySelector('#picture').content;
 const picturesContainer = document.querySelector('.pictures');
+
+let photos;
 
 //Отрисовка фотографий по шаблону
 const renderPhotos = () => {
@@ -16,4 +19,19 @@ const renderPhotos = () => {
   picturesContainer.appendChild(photoFragment);
 };
 
-export {renderPhotos};
+const createPhotos = (data) => {
+  photos = data;
+  renderPhotos();
+};
+
+const showError = (data) => {
+  const textError = document.createElement('p');
+  textError.textContent = data;
+  picturesContainer.appendChild(textError);
+  textError.className = 'errorMessage';
+  textError.style.color = 'red';
+};
+
+const loadPhotos = createLoaderPhotos(createPhotos,showError);
+
+export {renderPhotos,loadPhotos};

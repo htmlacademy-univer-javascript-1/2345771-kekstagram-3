@@ -1,3 +1,5 @@
+import {removeErrorMessage} from './validateForm.js';
+
 //Открытие, закрытие окна редактирования фото
 const openButton = document.querySelector('#upload-file');
 const closeButton = document.querySelector('#upload-cancel');
@@ -16,6 +18,8 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const effectLevelInput = document.querySelector('.effect-level__value');
 //Картинка
 const imageElement = document.querySelector('.img-upload__preview');
+//Кнопка отправки данных
+const submitButton = document.querySelector('.img-upload__submit');
 
 let scaleValue = 100;
 let effectValue = 100;
@@ -46,9 +50,7 @@ const hideSlider = () => {
   sliderElement.classList.add('hidden');
 };
 
-const closeWindow = () => {
-  uploadWindow.classList.add('hidden');
-  document.body.classList.remove('modal-open');
+const clearWindow = () => {
   openButton.value = '';
   hashtagInput.value = '';
   commentInput.value = '';
@@ -59,6 +61,21 @@ const closeWindow = () => {
   currentEffectId = 0;
   effectLevelInput.value = effectValue;
   hideSlider();
+};
+
+const closeWindow = () => {
+  uploadWindow.classList.add('hidden');
+  document.body.classList.remove('modal-open');
+  removeErrorMessage();
+  clearWindow();
+};
+
+const disableButton = () => {
+  submitButton.disabled = true;
+};
+
+const activateButton = () => {
+  submitButton.disabled = false;
 };
 
 //Кнопки открытия и закрытия окна редактирования фото
@@ -180,26 +197,24 @@ buttonsOfEffectsList[5].addEventListener('click', () => {
 
 sliderElement.noUiSlider.on('update', () => {
   effectValue = sliderElement.noUiSlider.get();
+  effectLevelInput.value = effectValue;
   switch (currentEffectId) {
     case 1:
-      effectLevelInput.value = `${effectValue}`;
       imageElement.style.filter = `grayscale(${effectValue})`;
       break;
     case 2:
-      effectLevelInput.value = `${effectValue}`;
       imageElement.style.filter = `sepia(${effectValue})`;
       break;
     case 3:
-      effectLevelInput.value = `${effectValue}%`;
       imageElement.style.filter = `invert(${effectValue}%)`;
       break;
     case 4:
-      effectLevelInput.value = `${effectValue}px`;
       imageElement.style.filter = `blur(${effectValue}px)`;
       break;
     case 5:
-      effectLevelInput.value = `${effectValue}`;
       imageElement.style.filter = `brightness(${effectValue})`;
       break;
   }
 });
+
+export {closeWindow, clearWindow, activateButton, disableButton};
