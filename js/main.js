@@ -1,3 +1,9 @@
-import {renderPhotos} from './render.js';
+import {createSuccessMessage, createErrorMessage} from './messages.js';
+import {loadPhotos} from './render.js';
+import './upload-window.js';
+import './validate-form.js';
+import './photo-upload.js';
 
-renderPhotos();
+createSuccessMessage();
+createErrorMessage();
+loadPhotos();
